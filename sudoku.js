@@ -25,12 +25,10 @@ var solution = [
     "912538764"
 ];
 
-//funkcja wywoływana przy ładowaniu strony
 window.onload = function(){
     initGame();
 }
 
-//inicjalizacja planszy
 function initGame(){
     //init grid
     for(let i=1; i<=9; i++){
@@ -75,6 +73,11 @@ function initGame(){
     checkSolution.classList.add("check_solution");
     document.getElementById("panel").append(checkSolution);
     checkSolution.addEventListener("click", isCorrect)
+
+    //key events
+    document.addEventListener('keydown', (event) => {
+        onKeyDown(event);
+    }, false);
 }
 
 //click on grid
@@ -92,20 +95,25 @@ function clickOnTile(){
     this.classList.add("selectedTile");
 }
 
+function putNumbertoTile(arg){
+    let coords = selectedTile.id.split("-"); 
+    
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
+    if(selectedTile!=null && initialBoard[r-1][c-1]=="-"){
+        if(selectedTile.innerText=="" || selectedTile.innerText != arg)
+            selectedTile.innerText = arg;
+        else
+            selectedTile.innerText = "";
+    }
+}
+
 //click on number on panel
 function clickOnNumber(){
         
     selectedNumber = this;
-
-    let coords = selectedTile.id.split("-"); //wybieramy z id współrzędne
-    
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-    //alert(coords[0]+" "+coords[1]+" "+initialBoard[r-1][c-1]);
-
-    if(selectedTile!=null && initialBoard[r-1][c-1]=="-"){
-        selectedTile.innerText = selectedNumber.innerText;
-    }
+    putNumbertoTile(selectedNumber.innerText);
 }
 
 //checking if user solution is correct
@@ -123,4 +131,13 @@ function isCorrect(){
         if(!isOk) break;
     }
     if(isOk) alert("Solution is correct.");
+}
+
+function onKeyDown(event){
+    let name = event.key;
+    let code = event.keyCode;
+    
+    if((code >= 97 && code <= 105) || (code >= 49 && code <= 57)){
+        putNumbertoTile(name);
+    }
 }
