@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    font-family: "Arial";
+}
+
+#game{ 
+    width: 710px;
+    height: 450px;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board {
+    width: 450px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#panel{
+    width: 235px;
+    height: 230px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+
+    font-family: "Arial";
+    font-size: 36px;
+    color: rgb(31, 86, 148);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/*given digits are black*/
+.default_tile{
+    color: black
+}
+
+.user_tile{
+    color: rgb(31, 86, 148);
+}
+
+/* borders depends on position in 3x3 box*/
+.top_border_2px{
+    border-top: 2px solid black;
+}
+.bottom_border_2px{
+    border-bottom: 2px solid black;
+}
+.left_border_2px{
+    border-left: 2px solid black;
+}
+.right_border_2px{
+    border-right: 2px solid black;
+}
+.left_border_1px{
+    border-left: 1px solid black;
+}
+.top_border_1px{
+    border-top: 1px solid black;
+}
+
+.selectedTile {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgb(31, 86, 148);
+}
+
+.number{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(59, 114, 177);
+
+    font-family: "Arial";
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+div.number:hover{
+    background-color: rgb(97, 153, 216);
+}
+
+.check_solution{
+    width: 170px;
+    height: 40px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(59, 114, 177);
+
+    font-family: "Arial";
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+div.check_solution:hover{
+    background-color: rgb(97, 153, 216);
+}
